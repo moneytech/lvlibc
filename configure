@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+set -e
+
+prefix="/usr"
+
+for i in "$@"; do
+    case $i in
+        --prefix=*)
+            prefix="${i#*=}"
+            ;;
+        --help | -h)
+            printf "lvlibc configure script\n"
+            printf "Available options:\n"
+            printf "\t--prefix=PATH   \tPath where llibc will be installed to\n"
+            printf "\t                \t(default: /usr)\n"
+            printf "\t--help | -h     \tShow this help\n"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $i"
+            exit 1
+            ;;
+    esac
+done
+
+# Final configuration
+cp -v Makefile.in Makefile
+
+echo   "Prefix: $prefix"
+sed -i "s|@@PREFIX@@|$prefix|g" Makefile
