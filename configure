@@ -12,9 +12,9 @@ for i in "$@"; do
         --help | -h)
             printf "lvlibc configure script\n"
             printf "Available options:\n"
-            printf "\t--prefix=PATH   \tPath where llibc will be installed to\n"
-            printf "\t                \t(default: /usr)\n"
-            printf "\t--help | -h     \tShow this help\n"
+            printf "\t--prefix=PATH\tPath where lvlibc will be installed to\n"
+            printf "\t             \t(default: /usr)\n"
+            printf "\t--help | -h  \tShow this help\n"
             exit 0
             ;;
         *)

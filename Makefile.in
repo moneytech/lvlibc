@@ -16,7 +16,7 @@ AR = ar
 CFLAGS  = -O2 -Wall -Wextra -Wpedantic
 ARFLAGS =
 
-CFLAGS_INTERNAL  := $(CFLAGS) -I$(includeDir) -ffreestanding
+CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir)
 ARFLAGS_INTERNAL := $(ARFLAGS)rcs
 
 libcSource = $(shell find $(libcDir) -type f -name '*.c')

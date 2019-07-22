@@ -20,7 +20,7 @@ Make sure you have installed:
 
 * `git` (only if you are using it to download the source)
 * `make`
-* `gcc`. `clang`, or another C compiler, the latest the better.
+* `gcc`, `clang`, or another C compiler, the latest the better.
 
 With all of that covered, just clone the [source] with `git` if you dont
 have it already with:
