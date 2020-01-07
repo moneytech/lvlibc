@@ -1,4 +1,9 @@
-#pragma once
+#ifndef __CTYPE_H__
+#define __CTYPE_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // Case related functions (case.c).
 int tolower(int c);
@@ -20,3 +25,9 @@ int isxdigit(int c);
 
 // GLibc extensions (glibc.c).
 int isascii(int c);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

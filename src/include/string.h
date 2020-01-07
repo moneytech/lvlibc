@@ -1,6 +1,11 @@
-#pragma once
+#ifndef __STRING_H__
+#define __STRING_H__
 
 #include <stddef.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // Memory related functions (mem.c).
 void *memchr(const void *str, int c, size_t n);
@@ -25,3 +30,9 @@ char *strrchr(const char *str, int c);
 size_t strspn(const char *str1, const char *str2);
 char *strstr(const char *haystack, const char *needle);
 char *strtok(char *str, const char *delimiter);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

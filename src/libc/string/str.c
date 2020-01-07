@@ -1,5 +1,4 @@
 #include <stddef.h>
-#include <stdbool.h>
 
 #include <string.h>
 
@@ -133,18 +132,18 @@ size_t strspn(const char *str1, const char *str2) {
 
 char *strstr(const char *haystack, const char *needle) {
     for (size_t i = 0; haystack[i]; i++) {
-        bool found = true;
+        int found = 1;
 
         for (size_t j = 0; needle[j]; j++) {
             if(!needle[j] || haystack[i + j] == needle[j]) {
                 continue;
             }
 
-            found = false;
+            found = 0;
             break;
         }
 
-        if(found) {
+        if (found) {
             return (char*)&haystack[i];
         }
     }
