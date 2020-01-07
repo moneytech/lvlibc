@@ -2,12 +2,11 @@
 
 ![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)
 
-LVLibc is the C library of the Lavender OS project, even though its portable to
-other systems.
+LVLibc aims to be a simple, compatible, and portable C library.
 
 The whole design has as main principles code correctness, and the extensive
 use of static linking, instead of dynamic one, even though the latter can be
-used tricking the build process quite easily
+used tricking the build process quite easily.
 
 ## Documentation
 
@@ -26,7 +25,7 @@ With all of that covered, just clone the [source] with `git` if you dont
 have it already with:
 
 ```bash
-git clone https://github.com/lavenderos/lvlibc.git
+git clone https://github.com/qword-os/lvlibc.git
 cd lvlibc
 ```
 
