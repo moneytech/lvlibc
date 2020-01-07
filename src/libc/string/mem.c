@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-void* memchr(const void* str, int c, size_t n) {
+void *memchr(const void *str, int c, size_t n) {
     char* a = (char*)str;
 
     for (size_t i = 0; i < n; i++) {
@@ -14,7 +14,7 @@ void* memchr(const void* str, int c, size_t n) {
     return NULL;
 }
 
-int memcmp(const void* str1, const void* str2, size_t n) {
+int memcmp(const void *str1, const void *str2, size_t n) {
     const char* a = str1;
     const char* b = str2;
 
@@ -29,7 +29,7 @@ int memcmp(const void* str1, const void* str2, size_t n) {
     return 0;
 }
 
-void* memcpy(void* dest, const void* src, size_t n) {
+void *memcpy(void *dest, const void *src, size_t n) {
     char*       a = dest;
     const char* b  = src;
 
@@ -40,7 +40,7 @@ void* memcpy(void* dest, const void* src, size_t n) {
     return dest;
 }
 
-void* memmove(void* dest, const void* src, size_t n) {
+void *memmove(void *dest, const void *src, size_t n) {
     char*       a = dest;
     const char* b  = src;
 
@@ -57,7 +57,7 @@ void* memmove(void* dest, const void* src, size_t n) {
     return dest;
 }
 
-void* memset(void* str, int c, size_t n) {
+void *memset(void *str, int c, size_t n) {
     char* a = (char*)str;
 
     for (size_t i = 0; i < n; i++) {

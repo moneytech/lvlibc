@@ -3,12 +3,12 @@
 
 #include <string.h>
 
-char* strcat(char* dest, const char* src) {
+char *strcat(char *dest, const char *src) {
     strcpy(dest + strlen(dest), src);
     return dest;
 }
 
-char* strncat(char* dest, const char* src, size_t n) {
+char *strncat(char *dest, const char *src, size_t n) {
     char*       a = (char*)dest;
     const char* b = (const char*)src;
 
@@ -23,7 +23,7 @@ char* strncat(char* dest, const char* src, size_t n) {
     return dest;
 }
 
-char* strchr(const char* str, int c) {
+char *strchr(const char *str, int c) {
     size_t i;
 
     for (i = 0; str[i]; i++) {
@@ -39,7 +39,7 @@ char* strchr(const char* str, int c) {
     return NULL;
 }
 
-int strcmp(const char* str1, const char* str2) {
+int strcmp(const char *str1, const char *str2) {
     for (size_t i = 0; str1[i] == str2[i]; i++) {
         if ((!str1[i]) && (!str2[i])) {
             return 0;
@@ -49,7 +49,7 @@ int strcmp(const char* str1, const char* str2) {
     return 1;
 }
 
-int strncmp(const char* str1, const char* str2, size_t n) {
+int strncmp(const char *str1, const char *str2, size_t n) {
     for (size_t i = 0; i < n; i++) {
         if (str1[i] != str2[i]) {
             return 1;
@@ -59,13 +59,13 @@ int strncmp(const char* str1, const char* str2, size_t n) {
     return 0;
 }
 
-int strcoll(const char* str1, const char* str2) {
+int strcoll(const char *str1, const char *str2) {
     // TODO: strcoll is defined to take "LC_COLLATE" into account, so it
     //       would be nice to give it that meaning.
     return strcmp(str1, str2);
 }
 
-char* strcpy(char* dest, const char* src) {
+char *strcpy(char *dest, const char *src) {
     size_t i;
 
     for (i = 0; src[i]; i++) {
@@ -77,7 +77,7 @@ char* strcpy(char* dest, const char* src) {
     return dest;
 }
 
-char* strncpy(char* dest, const char* src, size_t n) {
+char *strncpy(char *dest, const char *src, size_t n) {
     for (size_t i = 0; i < n; i++) {
         dest[i] = src[i];
     }
@@ -85,7 +85,7 @@ char* strncpy(char* dest, const char* src, size_t n) {
     return dest;
 }
 
-size_t strcspn(const char* str1, const char* str2) {
+size_t strcspn(const char *str1, const char *str2) {
     size_t i;
 
     for (i = 0; str1[i] && !strchr(str2, str1[i]); i++);
@@ -93,7 +93,7 @@ size_t strcspn(const char* str1, const char* str2) {
     return i;
 }
 
-size_t strlen(const char* str) {
+size_t strlen(const char *str) {
     size_t len;
 
     for (len = 0; str[len]; len++);
@@ -101,7 +101,7 @@ size_t strlen(const char* str) {
     return len;
 }
 
-char* strpbrk(const char* str1, const char* str2) {
+char *strpbrk(const char *str1, const char *str2) {
     for (size_t i = 0; str1[i]; i++) {
         if (strchr(str2, str1[i])) {
             return (char*)(str1 + i);
@@ -111,7 +111,7 @@ char* strpbrk(const char* str1, const char* str2) {
     return NULL;
 }
 
-char* strrchr(const char* str, int c) {
+char *strrchr(const char *str, int c) {
     char* ret = NULL;
 
     do {
@@ -123,7 +123,7 @@ char* strrchr(const char* str, int c) {
     return ret;
 }
 
-size_t strspn(const char* str1, const char* str2) {
+size_t strspn(const char *str1, const char *str2) {
     size_t i;
 
     for (i = 0; str1[i] && strchr(str2, str1[i]); i++);
@@ -131,7 +131,7 @@ size_t strspn(const char* str1, const char* str2) {
     return i;
 }
 
-char* strstr(const char* haystack, const char* needle) {
+char *strstr(const char *haystack, const char *needle) {
     for (size_t i = 0; haystack[i]; i++) {
         bool found = true;
 
@@ -152,7 +152,7 @@ char* strstr(const char* haystack, const char* needle) {
     return NULL;
 }
 
-char* strtok(char* str, const char* delimiter) {
+char *strtok(char *str, const char *delimiter) {
     static char* buffer;
 
     if (str != NULL) {

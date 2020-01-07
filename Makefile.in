@@ -1,11 +1,12 @@
 override prefix = @@PREFIX@@
 DESTDIR =
 
-override includeDir = include
+override includeDir = src/include
+override sysdepsDir = src/sysdeps
 override testDir    = test
 
-override libcDir = libc
-override mathDir = math
+override libcDir = src/libc
+override mathDir = src/math
 
 override libcExec = libc.a
 override mathExec = libm.a
@@ -16,7 +17,7 @@ AR = ar
 CFLAGS  = -O2 -Wall -Wextra -Wpedantic
 ARFLAGS =
 
-CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir)
+CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir) -I$(sysdepsDir)
 ARFLAGS_INTERNAL := $(ARFLAGS)rcs
 
 libcSource = $(shell find $(libcDir) -type f -name '*.c')
