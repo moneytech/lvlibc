@@ -51,7 +51,7 @@ test:
 	@rm -rf libctest
 
 	@echo "Testing libm..."
-	@$(CC) $(testDir)/math.c libm.a -static -isystem $(includeDir) -o mathtest
+	@$(CC) $(testDir)/math.c libm.a src/libc/sysdeps.o -static -isystem $(includeDir) -o mathtest
 	@./mathtest
 	@rm -rf mathtest
 
