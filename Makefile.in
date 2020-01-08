@@ -2,14 +2,10 @@ override prefix = @@PREFIX@@
 DESTDIR =
 
 override includeDir = src/include
-override sysdepsDir = src/sysdeps
 override testDir    = test
 
 override libcDir = src/libc
 override mathDir = src/math
-
-override libcExec = libc.a
-override mathExec = libm.a
 
 CC = cc
 AR = ar
@@ -17,8 +13,10 @@ AR = ar
 CFLAGS  = -O2 -Wall -Wextra -Wpedantic
 ARFLAGS =
 
-CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir) -I$(sysdepsDir)
+CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir)
 ARFLAGS_INTERNAL := $(ARFLAGS)rcs
+
+allHeaders = $(shell find $(includeDir) -type f -name '*.h')
 
 libcSource = $(shell find $(libcDir) -type f -name '*.c')
 mathSource = $(shell find $(mathDir) -type f -name '*.c')
@@ -28,45 +26,40 @@ mathObjects = $(mathSource:.c=.o)
 
 .PHONY: all install-headers install test clean distclean
 
-all: $(libcObjects) $(mathObjects)
-	@echo "$(AR) '$(libcExec)'..."
-	@$(AR) $(ARFLAGS_INTERNAL) $(libcExec) $(libcObjects)
-	@echo "$(AR) '$(mathExec)'..."
-	@$(AR) $(ARFLAGS_INTERNAL) $(mathExec) $(mathObjects)
+all: libc.a libm.a
+
+libc.a: $(libcObjects)
+	$(AR) $(ARFLAGS_INTERNAL) $@ $(libcObjects)
+
+libm.a: $(mathObjects)
+	$(AR) $(ARFLAGS_INTERNAL) $@ $(mathObjects)
 
 %.o: %.c
-	@echo "$(CC) '$@'..."
-	@$(CC) $(CFLAGS_INTERNAL) -c $< -o $@
+	$(CC) $(CFLAGS_INTERNAL) -c $< -o $@
 
 install-headers:
-	@echo "Preparing $(DESTDIR)$(prefix)..."
-	@mkdir -p "$(DESTDIR)$(prefix)/include"
+	install -d "$(DESTDIR)$(prefix)/include"
+	cp -rL $(includeDir) "$(DESTDIR)$(prefix)/"
 
-	@echo "Copying headers from $(includeDir) to $(DESTDIR)$(prefix)/include..."
-	@cp -r $(includeDir)/* "$(DESTDIR)$(prefix)/include"
-
-install: install-headers
-	@mkdir -p "$(DESTDIR)$(prefix)/lib"
-
-	@echo "Installing '$(libcExec)' to $(DESTDIR)$(prefix)/lib..."
-	@cp $(libcExec) $(DESTDIR)$(prefix)/lib
-
-	@echo "Installing '$(mathExec)' to $(DESTDIR)$(prefix)/lib..."
-	@cp $(mathExec) $(DESTDIR)$(prefix)/lib
+install: all install-headers
+	install -d "$(DESTDIR)$(prefix)/lib"
+	install -m 644 libc.a "$(DESTDIR)$(prefix)/lib/"
+	install -m 644 libm.a "$(DESTDIR)$(prefix)/lib/"
 
 test:
-	@echo "Test $(libcExec)..."
-	@$(CC) $(testDir)/libc.c $(libcExec) -static -isystem $(includeDir) -o libctest
+	@echo "Testing libc..."
+	@$(CC) $(testDir)/libc.c libc.a -static -isystem $(includeDir) -o libctest
 	@./libctest
 	@rm -rf libctest
 
-	@echo "Test $(mathExec)..."
-	@$(CC) $(testDir)/math.c $(mathExec) -static -isystem $(includeDir) -o mathtest
+	@echo "Testing libm..."
+	@$(CC) $(testDir)/math.c libm.a -static -isystem $(includeDir) -o mathtest
 	@./mathtest
 	@rm -rf mathtest
 
 clean:
-	rm -rf $(libcObjects) $(mathObjects) $(libcExec) $(mathExec)
+	rm -rf $(libcObjects) $(mathObjects) libc.a libm.a
 
 distclean: clean
+	rm -f current_port
 	rm -f Makefile
