@@ -9,6 +9,7 @@ extern "C" {
 #endif
 
 typedef int64_t ssize_t;
+typedef int     pid_t;
 
 #ifdef __cplusplus
 }
