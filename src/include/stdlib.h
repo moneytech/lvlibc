@@ -10,6 +10,7 @@ extern "C" {
 void *malloc(size_t size);
 void free(void *ptr);
 void abort(void);
+void exit(int status);
 int atexit(void (*func)(void));
 int atoi(const char *str);
 char *getenv(const char *var);

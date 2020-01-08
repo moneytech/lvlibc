@@ -15,6 +15,7 @@ extern FILE *stdin, *stdout, *stderr;
 int fflush(FILE *stream);
 int fprintf(FILE *stream, const char *fmt, ...);
 int vfprintf(FILE *stream, const char *fmt, va_list arg);
+int sprintf(char *buf, const char *fmt, ...);
 FILE *fopen(const char *path, const char *mode);
 int fclose(FILE *stream);
 size_t fread(void *buf, size_t size, size_t nmemb, FILE *stream);

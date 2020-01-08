@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 
+pid_t getpid(void);
+
 pid_t fork(void);
 int execv(const char *path, char *const argv[]);
 int execvp(const char *path, char *const argv[]);
