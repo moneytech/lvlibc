@@ -24,7 +24,10 @@ mathObjects = $(mathSource:.c=.o)
 
 .PHONY: all install-headers install test clean distclean
 
-all: libc.a libm.a
+all: crt0.o libc.a libm.a
+
+crt0.o: current_port/crt0.c
+	$(CC) $(CFLAGS_INTERNAL) -c $< -o $@
 
 libc.a: $(libcObjects)
 	$(AR) $(ARFLAGS_INTERNAL) $@ $(libcObjects)
@@ -41,6 +44,7 @@ install-headers:
 
 install: all install-headers
 	install -d "$(DESTDIR)$(prefix)/lib"
+	install -m 644 crt0.o "$(DESTDIR)$(prefix)/lib/"
 	install -m 644 libc.a "$(DESTDIR)$(prefix)/lib/"
 	install -m 644 libm.a "$(DESTDIR)$(prefix)/lib/"
 
