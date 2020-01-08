@@ -2,6 +2,7 @@
 #define __SYS__TYPES_H__
 
 #include <stddef.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {

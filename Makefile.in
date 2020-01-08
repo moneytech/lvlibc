@@ -16,10 +16,8 @@ ARFLAGS =
 CFLAGS_INTERNAL  := $(CFLAGS) -ffreestanding -I$(includeDir)
 ARFLAGS_INTERNAL := $(ARFLAGS)rcs
 
-allHeaders = $(shell find $(includeDir) -type f -name '*.h')
-
-libcSource = $(shell find $(libcDir) -type f -name '*.c')
-mathSource = $(shell find $(mathDir) -type f -name '*.c')
+libcSource = $(shell find $(libcDir) -name '*.c')
+mathSource = $(shell find $(mathDir) -name '*.c')
 
 libcObjects = $(libcSource:.c=.o)
 mathObjects = $(mathSource:.c=.o)
