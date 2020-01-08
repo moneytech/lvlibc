@@ -4,7 +4,7 @@
 #include <assert.h>
 
 #define FUNCTION_STUB() do { \
-    assert(!"Function " __func__ " is a stub"); \
+    assert(!"Function " stringify(__func__) " is a stub"); \
 } while (0)
 
 #endif
