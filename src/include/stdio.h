@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <lvlibc/stdio-abi.h>
 
+#define EOF (-1)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
