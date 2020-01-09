@@ -11,6 +11,9 @@ extern "C" {
 typedef int64_t ssize_t;
 typedef int     pid_t;
 
+// FIXME: stubs
+typedef void   *pthread_attr_t;
+
 #ifdef __cplusplus
 }
 #endif
