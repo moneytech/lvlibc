@@ -1,6 +1,4 @@
-# `lvlibc` license
-
-Copyright 2019 the lvlibc authors (AUTHORS.md)
+Copyright 2019-2020, the members of the qword-os GitHub organization.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
