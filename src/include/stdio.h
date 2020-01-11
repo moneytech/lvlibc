@@ -29,11 +29,17 @@ int snprintf(char *buf, size_t len, const char *fmt, ...);
 int sprintf(char *buf, const char *fmt, ...);
 
 int vfprintf(FILE *stream, const char *fmt, va_list arg);
-int vdprintf(int fd, const char *fmt, va_list arg);
 int fprintf(FILE *stream, const char *fmt, ...);
-int dprintf(int fd, const char *fmt, ...);
 int vprintf(const char *fmt, va_list arg);
 int printf(const char *fmt, ...);
+
+int __vdprintf(int fd, const char *fmt, va_list arg);
+int __dprintf(int fd, const char *fmt, ...);
+
+#if _POSIX_C_SOURCE >= 200809 || defined(__GLIBC__)
+#  define vdprintf __vdprintf
+#  define dprintf __dprintf
+#endif
 
 #ifdef __cplusplus
 }

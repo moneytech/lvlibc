@@ -282,7 +282,7 @@ int vfprintf(FILE *stream, const char *fmt, va_list arg) {
     return ret;
 }
 
-int vdprintf(int fd, const char *fmt, va_list arg) {
+int __vdprintf(int fd, const char *fmt, va_list arg) {
     char buf[TMP_BUFFER_SIZE];
     int ret = vsnprintf(buf, TMP_BUFFER_SIZE, fmt, arg);
     __sys_write(fd, buf, ret);
@@ -299,11 +299,11 @@ int fprintf(FILE *stream, const char *fmt, ...) {
     return ret;
 }
 
-int dprintf(int fd, const char *fmt, ...) {
+int __dprintf(int fd, const char *fmt, ...) {
     va_list va;
 
     va_start(va, fmt);
-    int ret = vdprintf(fd, fmt, va);
+    int ret = __vdprintf(fd, fmt, va);
     va_end(va);
 
     return ret;
