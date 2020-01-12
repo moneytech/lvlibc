@@ -3,16 +3,16 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include <time.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef int64_t ssize_t;
-typedef int     pid_t;
-
 typedef int64_t off_t;
+
+typedef int64_t time_t;
+typedef int64_t suseconds_t;
 
 typedef uint64_t dev_t;
 typedef uint64_t ino_t;

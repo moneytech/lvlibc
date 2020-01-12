@@ -2,7 +2,7 @@
 #define __TIME_H__
 
 #include <stddef.h>
-#include <lvlibc/time-abi.h>
+#include <sys/types.h>
 
 #ifdef __cplusplus
 extern "C" {
