@@ -25,6 +25,8 @@ typedef int32_t pid_t;
 typedef int32_t uid_t;
 typedef int32_t gid_t;
 
+typedef int id_t;
+
 // FIXME: stubs
 typedef void   *pthread_attr_t;
 

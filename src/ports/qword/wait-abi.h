@@ -16,4 +16,8 @@
 #define WSTOPSIG(x) (((x) & 0x00ff0000) >> 16)
 #define WTERMSIG(x) (((x) & 0xff000000) >> 24)
 
+typedef enum {
+	P_ALL, P_PID, P_PGID
+} idtype_t;
+
 #endif
