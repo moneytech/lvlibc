@@ -5,6 +5,8 @@
 #include <sys/types.h>
 #include <lvlibc/unistd-abi.h>
 
+#define _POSIX_VERSION (200809L)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
